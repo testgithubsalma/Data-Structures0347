@@ -1,0 +1,33 @@
+#include <stdio.h>
+void createArr(int arr[100], int n)
+{
+    int i;
+    for(i=0; i<n; i++){
+        if(i == 0){
+            printf(" \nEnter value:");
+            scanf("%d",&arr[i]); 
+        }
+        else{
+            printf("Enter next value:");
+            scanf("%d",&arr[i]);
+        }
+
+    }
+}
+void displayArr(int arr[100], int n)
+{
+    int i;
+    printf("\n\nThis is your created array:");
+    for(i=0; i<n; i++){
+        printf("%d \t",arr[i]);
+    }
+}
+int main() 
+{
+    int arr[100],n;
+    printf("Please enter the size of array:");
+    scanf("%d",&n);
+   createArr(arr,n);
+  displayArr(arr,n);
+ return 0;
+}

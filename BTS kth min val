@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+ 
+class Node {
+    public int data;
+    public Node left, right;
+ 
+    public Node(int data)
+    {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+ 
+class MainClass {
+    
+    public static Node insert(Node node, int data)
+    {
+     
+        if (node == null) {
+            return new Node(data);
+        }
+        else {
+          
+            if (data <= node.data) {
+                node.left = insert(node.left, data);
+            }
+            else {
+                node.right = insert(node.right, data);
+            }
+ 
+            return node;
+        }
+    }
+
+    public static void inorder(Node node,
+                               List<int> sortedInorder)
+    {
+        if (node == null) {
+            return;
+        }
+ 
+        inorder(node.left, sortedInorder);
+ 
+        sortedInorder.Add(node.data);
+ 
+        
+        inorder(node.right, sortedInorder);
+    }
+ 
+    public static void Main(string[] args)
+    {
+        Node root = null;
+        root = insert(root, 4);
+        insert(root, 2);
+        insert(root, 1);
+        insert(root, 3);
+        insert(root, 6);
+        insert(root, 4);
+        insert(root, 5);
+ 
+        List<int> sortedInorder = new List<int>();
+ 
+        inorder(root, sortedInorder); 
+                              
+        Console.WriteLine("\n Minimum value in BST is {0}",
+                          sortedInorder[0]);
+    }
+}
